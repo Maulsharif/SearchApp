@@ -3,7 +3,7 @@ using System.Linq;
 using GenerateTextService;
 namespace SearchService
 {
-    public class SearchService:ISearchService
+    public class SearchService:ISearchService.ISearchService
     {
         public List<string> GetSearchResult(string word)
         {

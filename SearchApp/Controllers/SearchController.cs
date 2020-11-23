@@ -2,19 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
-using SearchService;
-using SearchService = SearchService.SearchService;
+
 
 namespace SearchApp.Controllers
 {
     [ApiController]
     [Route("api/[controller]")] 
 
-    public class Search : Controller
+    public class SearchController : Controller
     {
-        private readonly ISearchService _service;
+        private readonly ISearchService.ISearchService _service;
 
-        public Search(ISearchService service)
+        public SearchController(ISearchService.ISearchService service)
         {
             _service = service;
         }
@@ -23,12 +22,12 @@ namespace SearchApp.Controllers
         public IActionResult Get(string word)
         {
             
-            
-            List<string> res = _service.GetSearchResult(word);
-            if (word=="")
-                return NotFound();
+            if (String.IsNullOrWhiteSpace(word))
+                            return BadRequest();
 
-            if (res.Any())
+            var res = _service.GetSearchResult(word);
+            
+            if (res.Count > 0)
             {
                 return Ok(res);
             }
