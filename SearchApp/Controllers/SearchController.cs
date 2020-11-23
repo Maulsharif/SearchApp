@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using Microsoft.AspNetCore.Mvc;
-
 
 namespace SearchApp.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")] 
+    [Route("api/[controller]")]
 
     public class SearchController : Controller
     {
@@ -15,29 +12,26 @@ namespace SearchApp.Controllers
 
         public SearchController(ISearchService.ISearchService service)
         {
+            if (service == null)
+            {
+                throw new ArgumentNullException(nameof(service));
+            }
+
             _service = service;
         }
 
         [HttpGet("{word}")]
         public IActionResult Get(string word)
         {
-            
-            if (String.IsNullOrWhiteSpace(word))
-                            return BadRequest();
+
+            if (string.IsNullOrWhiteSpace(word))
+            {
+                return BadRequest();
+            }
 
             var res = _service.GetSearchResult(word);
-            
-            if (res.Count > 0)
-            {
-                return Ok(res);
-            }
-            else
-            {
-                return NoContent();
-            }
-           
-        }
 
-       
+            return res.Count > 0 ? Ok(res) : (IActionResult)NoContent();
+        }
     }
 }

@@ -5,9 +5,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\ISearchService\ISearchService.csproj" />
-      <ProjectReference Include="..\MockSearchService\MockSearchService.csproj" />
+      <ProjectReference Include="..\SearchService.Mock\SearchService.Mock.csproj" />
+      <ProjectReference Include="..\SearchService\SearchService.csproj" />
     </ItemGroup>
-
 
 </Project>

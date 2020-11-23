@@ -2,9 +2,9 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchApp", "SearchApp\SearchApp.csproj", "{72372C18-F123-4607-99B2-462A0E7F8E66}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISearchService", "ISearchService\ISearchService.csproj", "{BAAC6115-D0E5-420E-A2C9-0914447B7152}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchService", "SearchService\SearchService.csproj", "{BAAC6115-D0E5-420E-A2C9-0914447B7152}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MockSearchService", "MockSearchService\MockSearchService.csproj", "{7436D47D-A25D-4F7C-8618-4B548E4722B0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchService.Mock", "SearchService.Mock\SearchService.Mock.csproj", "{7436D47D-A25D-4F7C-8618-4B548E4722B0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

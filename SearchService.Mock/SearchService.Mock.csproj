@@ -2,10 +2,12 @@
 
     <PropertyGroup>
         <TargetFramework>netcoreapp3.1</TargetFramework>
+        <RootNamespace>MockSearchService</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\ISearchService\ISearchService.csproj" />
+      <ProjectReference Include="..\SearchService\SearchService.csproj" />
     </ItemGroup>
+
 
 </Project>
