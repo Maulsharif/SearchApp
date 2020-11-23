@@ -1,29 +1,23 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
+using SearchService;
 
 namespace SearchApp.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-
     public class SearchController : Controller
     {
-        private readonly ISearchService.ISearchService _service;
+        private readonly ISearchService _service;
 
-        public SearchController(ISearchService.ISearchService service)
+        public SearchController(ISearchService service)
         {
-            if (service == null)
-            {
-                throw new ArgumentNullException(nameof(service));
-            }
-
-            _service = service;
+            _service = service ?? throw new ArgumentNullException(nameof(service));
         }
 
         [HttpGet("{word}")]
         public IActionResult Get(string word)
         {
-
             if (string.IsNullOrWhiteSpace(word))
             {
                 return BadRequest();

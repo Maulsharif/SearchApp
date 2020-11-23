@@ -19,7 +19,7 @@ namespace SearchApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddScoped<ISearchService.ISearchService, MoqSearchService>();
+            services.AddScoped<SearchService.ISearchService, MoqSearchService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

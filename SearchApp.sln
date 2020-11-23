@@ -1,10 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchApp", "SearchApp\SearchApp.csproj", "{72372C18-F123-4607-99B2-462A0E7F8E66}"
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SearchApp", "SearchApp\SearchApp.csproj", "{72372C18-F123-4607-99B2-462A0E7F8E66}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchService", "SearchService\SearchService.csproj", "{BAAC6115-D0E5-420E-A2C9-0914447B7152}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SearchService", "SearchService\SearchService.csproj", "{BAAC6115-D0E5-420E-A2C9-0914447B7152}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchService.Mock", "SearchService.Mock\SearchService.Mock.csproj", "{7436D47D-A25D-4F7C-8618-4B548E4722B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SearchService.Mock", "SearchService.Mock\SearchService.Mock.csproj", "{7436D47D-A25D-4F7C-8618-4B548E4722B0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchApp.Tests", "SearchApp.Tests\SearchApp.Tests.csproj", "{6CFE763B-85C4-4B58-BC01-69CD0485C0D5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,7 +29,15 @@ Global
 		{7436D47D-A25D-4F7C-8618-4B548E4722B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7436D47D-A25D-4F7C-8618-4B548E4722B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7436D47D-A25D-4F7C-8618-4B548E4722B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CFE763B-85C4-4B58-BC01-69CD0485C0D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CFE763B-85C4-4B58-BC01-69CD0485C0D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CFE763B-85C4-4B58-BC01-69CD0485C0D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CFE763B-85C4-4B58-BC01-69CD0485C0D5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4DF200D1-2F18-449D-A617-5652DE62C3F6}
 	EndGlobalSection
 EndGlobal

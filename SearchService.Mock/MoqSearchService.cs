@@ -1,32 +1,46 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
-using ISearchService.Model;
-
+using SearchService;
+using SearchService.Model;
 
 namespace MockSearchService
 {
-    public class MoqSearchService : ISearchService.ISearchService
+    public class MoqSearchService : ISearchService
     {
-        public IReadOnlyCollection<SearchResult> GetSearchResult(string word)
+         private readonly SearchResult[] _data;
+
+         public MoqSearchService()
         {
-            var res = InitializeList();
-            return (IReadOnlyCollection<SearchResult>)res.Where(predicate: w =>
+            _data = new[]
             {
-                return w.Text.ToUpper().Contains(word.ToUpper());
-            });
+                new SearchResult() { Id = 1, Text = "cat" },
+                new SearchResult() { Id = 2, Text = "dog" },
+                new SearchResult() { Id = 3, Text = "koala" },
+                new SearchResult() { Id = 4, Text = "rat" },
+            };
         }
 
-        private List<SearchResult> InitializeList()
+         public MoqSearchService(IEnumerable<SearchResult> data)
         {
-            var res = new List<SearchResult>()
-                     {
-                      new SearchResult() { Id = 1, Text = "cat" },
-                      new SearchResult() { Id = 2, Text = "dog" },
-                      new SearchResult() { Id = 3, Text = "koala" },
-                      new SearchResult() { Id = 4, Text = "rat" },
-                     };
+            _data = data?.ToArray() ?? throw new ArgumentNullException(nameof(data));
+        }
 
-            return res;
+         public IReadOnlyCollection<SearchResult> GetSearchResult(string word)
+        {
+            if (word == null)
+            {
+                throw new ArgumentNullException(nameof(word));
+            }
+
+            if (word.Length == 0)
+            {
+                throw new ArgumentException("Should not be empty.", nameof(word));
+            }
+
+            return _data
+                .Where(w => w.Text.Contains(word, StringComparison.OrdinalIgnoreCase))
+                .ToArray();
         }
     }
 }

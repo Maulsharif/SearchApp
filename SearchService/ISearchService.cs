@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using ISearchService.Model;
+using SearchService.Model;
 
-namespace ISearchService
+namespace SearchService
 {
     public interface ISearchService
     {
