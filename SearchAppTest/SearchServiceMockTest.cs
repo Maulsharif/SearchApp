@@ -6,7 +6,7 @@ using Xunit;
 
 namespace SearchAppTest
 {
-    public class SearchServiceMockiceTest
+    public class SearchServiceMockTest
     {
         
         [Fact]
