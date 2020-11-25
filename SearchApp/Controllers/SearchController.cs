@@ -1,11 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Net.Mime;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SearchService;
+using SearchService.Model;
 
 namespace SearchApp.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+
     public class SearchController : Controller
     {
         private readonly ISearchService _service;
@@ -16,7 +21,10 @@ namespace SearchApp.Controllers
         }
 
         [HttpGet("{word}")]
-        public IActionResult Get(string word)
+        [Produces(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<SearchResult>))]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        public ActionResult<IEnumerable<SearchResult>> Get(string word)
         {
             if (string.IsNullOrWhiteSpace(word))
             {
@@ -25,7 +33,12 @@ namespace SearchApp.Controllers
 
             var res = _service.GetSearchResult(word);
 
-            return res.Count > 0 ? Ok(res) : (IActionResult)NoContent();
+            if (res.Count > 0)
+            {
+                return Ok(res);
+            }
+
+            return NoContent();
         }
     }
 }

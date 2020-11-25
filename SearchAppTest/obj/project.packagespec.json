@@ -16,6 +16,9 @@
     "frameworks": {
       "netcoreapp3.1": {
         "projectReferences": {
+          "C:\\Users\\Gulnaz\\RiderProjects\\SearchApp\\SearchApp\\SearchApp.csproj": {
+            "projectPath": "C:\\Users\\Gulnaz\\RiderProjects\\SearchApp\\SearchApp\\SearchApp.csproj"
+          },
           "C:\\Users\\Gulnaz\\RiderProjects\\SearchApp\\SearchService.Mock\\SearchService.Mock.csproj": {
             "projectPath": "C:\\Users\\Gulnaz\\RiderProjects\\SearchApp\\SearchService.Mock\\SearchService.Mock.csproj"
           },
@@ -35,6 +38,10 @@
   "frameworks": {
     "netcoreapp3.1": {
       "dependencies": {
+        "FakeItEasy": {
+          "target": "Package",
+          "version": "[6.2.1, )"
+        },
         "Microsoft.CodeAnalysis.FxCopAnalyzers": {
           "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
           "suppressParent": "All",
@@ -81,6 +88,9 @@
       "assetTargetFallback": true,
       "warn": true,
       "frameworkReferences": {
+        "Microsoft.AspNetCore.App": {
+          "privateAssets": "none"
+        },
         "Microsoft.NETCore.App": {
           "privateAssets": "all"
         }

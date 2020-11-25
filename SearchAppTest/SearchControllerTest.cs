@@ -8,35 +8,52 @@ using Xunit;
 
 namespace SearchAppTest
 {
-    public class SearchControllerTest
+    public class SearchControllerTest 
     {
-        [Fact]
-        public void ConsturctorTest()
+        private readonly SearchController _controller;
+        private readonly ISearchService _service;
+
+        public SearchControllerTest()
         {
-            var fakeService = A.Fake<ISearchService>();
-            var controller = new SearchController(fakeService);
+            _service = A.Fake<ISearchService>();
+            _controller = new SearchController(_service);
+        }
+
+        [Fact]
+        public void CheckConstructor()
+        {
             Assert.Throws<ArgumentNullException>(() => new SearchController(null));
-            Assert.NotNull(controller);
+            Assert.NotNull(_controller);
         }
 
         [Fact]
-        public void GetMethodTest()
+        public void CheckBadRequestCode()
         {
-            var fakeService = A.Fake<ISearchService>();
-            SearchController controller = new SearchController(fakeService);
-            var res1 = controller.Get(null);
-            var res2 = controller.Get(string.Empty);
-
-            Assert.IsType<BadRequestResult>(res1);
-            Assert.IsType<BadRequestResult>(res2);
+            var res1 = _controller.Get(null);
+            Assert.IsType<BadRequestResult>(res1.Result);
         }
 
         [Fact]
-        public void GetMethodPosiriveStatus()
+        public void CheckNoContentCode()
         {
-            var fakeService = A.Fake<ISearchService>();
-            var res3 = A.CallTo(() => fakeService.GetSearchResult("bo")).Returns(Array.Empty<SearchResult>());
-            Assert.IsType<NoContentResult>(res3);
+            A.CallTo(() => _service.GetSearchResult("bo")).Returns(Array.Empty<SearchResult>());
+            var res = _controller.Get("bo");
+            Assert.IsType<NoContentResult>(res.Result);
+        }
+
+        [Fact]
+        public void CheckOkStatusCode()
+        {
+               SearchResult[] data = new SearchResult[]
+               {
+                  new SearchResult { Id = 1, Text = "help me" },
+               };
+
+               A.CallTo(() => _service.GetSearchResult("me")).Returns(data);
+
+               var res4 = _controller.Get("me");
+               Assert.IsType<OkObjectResult>(res4.Result);
+               //Assert.NotEmpty(res4.Value);
         }
     }
 }

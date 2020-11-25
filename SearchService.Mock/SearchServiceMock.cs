@@ -6,11 +6,11 @@ using SearchService.Model;
 
 namespace MockSearchService
 {
-    public class MoqSearchService : ISearchService
+    public class SearchServiceMock : ISearchService
     {
-         private readonly SearchResult[] _data;
+        private readonly SearchResult[] _data;
 
-         public MoqSearchService()
+        public SearchServiceMock()
         {
             _data = new[]
             {
@@ -21,12 +21,12 @@ namespace MockSearchService
             };
         }
 
-         public MoqSearchService(IEnumerable<SearchResult> data)
+        public SearchServiceMock(IEnumerable<SearchResult> data)
         {
             _data = data?.ToArray() ?? throw new ArgumentNullException(nameof(data));
         }
 
-         public IReadOnlyCollection<SearchResult> GetSearchResult(string word)
+        public IReadOnlyCollection<SearchResult> GetSearchResult(string word)
         {
             if (word == null)
             {
@@ -38,6 +38,7 @@ namespace MockSearchService
                 throw new ArgumentException("Should not be empty.", nameof(word));
             }
 
+            Console.WriteLine(_data.Length);
             return _data
                 .Where(w => w.Text.Contains(word, StringComparison.OrdinalIgnoreCase))
                 .ToArray();
