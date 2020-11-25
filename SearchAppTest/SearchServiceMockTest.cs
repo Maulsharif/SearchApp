@@ -20,16 +20,16 @@ namespace SearchAppTest
         [Fact]
         public void CheckOnExceptions()
         {
-            var service = new MockSearchService.SearchServiceMock();
+            var service = new SearchServiceMock();
             Assert.Throws<ArgumentException>(() => service.GetSearchResult(string.Empty));
             Assert.Throws<ArgumentNullException>(() => service.GetSearchResult(null));
         }
 
         [Fact]
-        public void Check()
+        public void CheckOnPositiveResults()
         {
             IEnumerable<SearchResult> data = FakeData();
-            var service = new MockSearchService.SearchServiceMock(data);
+            var service = new SearchServiceMock(data);
             var result = service.GetSearchResult("bull");
             var result2 = service.GetSearchResult("boo");
             Assert.Empty(result);

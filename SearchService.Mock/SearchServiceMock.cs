@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using SearchService;
 using SearchService.Model;
 
@@ -38,10 +40,15 @@ namespace MockSearchService
                 throw new ArgumentException("Should not be empty.", nameof(word));
             }
 
-            Console.WriteLine(_data.Length);
             return _data
                 .Where(w => w.Text.Contains(word, StringComparison.OrdinalIgnoreCase))
                 .ToArray();
+        }
+
+        public Task<IReadOnlyCollection<SearchResult>> GetSearchResultAsync(string word, CancellationToken cancellationToken)
+        {
+            var result = GetSearchResult(word);
+            return Task.FromResult(result);
         }
     }
 }
