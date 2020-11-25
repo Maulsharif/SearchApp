@@ -8,7 +8,7 @@ namespace SearchAppTest
 {
     public class SearchServiceMockTest
     {
-        
+
         [Fact]
         public void CheckConstructor()
         {
