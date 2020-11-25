@@ -2,7 +2,6 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
-using MockSearchService;
 using SearchService;
 
 namespace SearchApp
@@ -20,7 +19,7 @@ namespace SearchApp
         public static void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddScoped<ISearchService>(options => new SearchServiceMock());
+            services.AddScoped((System.Func<System.IServiceProvider, ISearchService>)(options => new SearchServiceMock.SearchServiceMock()));
             services.AddSwaggerGen(options =>
             {
                 options.SwaggerDoc("v1", new OpenApiInfo

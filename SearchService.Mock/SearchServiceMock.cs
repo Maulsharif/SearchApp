@@ -4,9 +4,9 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using SearchService;
-using SearchService.Model;
+using SearchService.Models;
 
-namespace MockSearchService
+namespace SearchServiceMock
 {
     public class SearchServiceMock : ISearchService
     {

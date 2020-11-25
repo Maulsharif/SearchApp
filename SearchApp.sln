@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SearchService", "SearchServ
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SearchService.Mock", "SearchService.Mock\SearchService.Mock.csproj", "{7436D47D-A25D-4F7C-8618-4B548E4722B0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchAppTest", "SearchAppTest\SearchAppTest.csproj", "{62F7345C-9ECD-4DD0-BE45-CAD9E280C65B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SearchAppTest", "SearchAppTest\SearchAppTest.csproj", "{62F7345C-9ECD-4DD0-BE45-CAD9E280C65B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchApp.UI", "SearchApp.UI\SearchApp.UI.csproj", "{F50803F0-9CAF-41BB-A570-824A55B9D145}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{62F7345C-9ECD-4DD0-BE45-CAD9E280C65B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{62F7345C-9ECD-4DD0-BE45-CAD9E280C65B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{62F7345C-9ECD-4DD0-BE45-CAD9E280C65B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F50803F0-9CAF-41BB-A570-824A55B9D145}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F50803F0-9CAF-41BB-A570-824A55B9D145}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F50803F0-9CAF-41BB-A570-824A55B9D145}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F50803F0-9CAF-41BB-A570-824A55B9D145}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

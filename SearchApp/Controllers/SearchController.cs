@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SearchService;
-using SearchService.Model;
+using SearchService.Models;
 
 namespace SearchApp.Controllers
 {

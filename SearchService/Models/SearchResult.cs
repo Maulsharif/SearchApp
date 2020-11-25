@@ -1,4 +1,4 @@
-﻿namespace SearchService.Model
+﻿namespace SearchService.Models
 {
     public class SearchResult
     {

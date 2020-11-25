@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Threading;
+using System.Threading.Tasks;
 using FakeItEasy;
 using Microsoft.AspNetCore.Mvc;
 using SearchApp.Controllers;
 using SearchService;
-using SearchService.Model;
+using SearchService.Models;
 using Xunit;
 
 namespace SearchAppTest
@@ -21,7 +22,7 @@ namespace SearchAppTest
         }
 
         [Fact]
-        public void CheckBadRequestCode()
+        public void Get_BadRequestCode()
         {
             ISearchService service = A.Fake<ISearchService>();
             using var controller = new SearchController(service);
@@ -30,7 +31,7 @@ namespace SearchAppTest
         }
 
         [Fact]
-        public void CheckNoContentCode()
+        public void Get_NoContentCode()
         {
             ISearchService service = A.Fake<ISearchService>();
             using var controller = new SearchController(service);
@@ -40,7 +41,7 @@ namespace SearchAppTest
         }
 
         [Fact]
-        public void CheckOkStatusCode()
+        public void Get_OkStatusCode()
         {
             ISearchService service = A.Fake<ISearchService>();
             using var controller = new SearchController(service);
@@ -55,27 +56,27 @@ namespace SearchAppTest
         }
 
         [Fact]
-        public void CheckBadRequestCodeAsync()
+        public async Task Get2_BadRequestCodeAsync()
         {
             ISearchService service = A.Fake<ISearchService>();
             using var controller = new SearchController(service);
 
-            var res1 = controller.Get2(null, CancellationToken.None);
-            Assert.IsType<BadRequestResult>(res1.Result.Result);
+            var res1 = await controller.Get2(null, CancellationToken.None);
+            Assert.IsType<BadRequestResult>(res1.Result);
         }
 
         [Fact]
-        public void CheckNoContentCodeAsync()
+        public async Task Get2_NoContentCodeAsync()
         {
             ISearchService service = A.Fake<ISearchService>();
             using var controller = new SearchController(service);
-            A.CallTo(() => service.GetSearchResult("bo")).Returns(Array.Empty<SearchResult>());
-            var res = controller.Get2("bo", CancellationToken.None);
-            Assert.IsType<NoContentResult>(res.Result.Result);
+            A.CallTo(() => service.GetSearchResultAsync("bo", CancellationToken.None)).ReturnsLazily(() => Array.Empty<SearchResult>());
+            var res = await controller.Get2("bo", CancellationToken.None);
+            Assert.IsType<NoContentResult>(res.Result);
         }
 
         [Fact]
-        public void CheckOkStatusCodeAsync()
+        public async Task Get2_OkStatusCodeAsync()
         {
             ISearchService service = A.Fake<ISearchService>();
             using var controller = new SearchController(service);
@@ -84,9 +85,9 @@ namespace SearchAppTest
                   new SearchResult { Id = 1, Text = "black and white" },
                };
 
-            A.CallTo(() => service.GetSearchResult("and")).Returns(data1);
-            var res4 = controller.Get2("and", CancellationToken.None);
-            Assert.IsType<OkObjectResult>(res4.Result.Result);
+            A.CallTo(() => service.GetSearchResultAsync("and", CancellationToken.None)).ReturnsLazily(() => data1);
+            var res4 = await controller.Get2("and", CancellationToken.None);
+            Assert.IsType<OkObjectResult>(res4.Result);
         }
     }
 }
