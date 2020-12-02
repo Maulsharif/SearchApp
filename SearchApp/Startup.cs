@@ -19,7 +19,10 @@ namespace SearchApp
         public static void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddScoped((System.Func<System.IServiceProvider, ISearchService>)(options => new SearchServiceMock.SearchServiceMock()));
+            services.AddCors();
+            services.AddScoped(
+                (System.Func<System.IServiceProvider, ISearchService>)(options =>
+                    new SearchServiceMock.SearchServiceMock()));
             services.AddSwaggerGen(options =>
             {
                 options.SwaggerDoc("v1", new OpenApiInfo
@@ -35,13 +38,11 @@ namespace SearchApp
         {
             app
                 .UseSwagger()
-                .UseSwaggerUI(options =>
-                {
-                    options.SwaggerEndpoint("/swagger/v1/swagger.json", "SearchApi");
-                });
+                .UseSwaggerUI(options => { options.SwaggerEndpoint("/swagger/v1/swagger.json", "SearchApi"); });
 
             app.UseMiddleware<ExceptionHandlerMiddleware>();
             app.UseRouting();
+            app.UseCors(builder => builder.AllowAnyOrigin());
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }
     }

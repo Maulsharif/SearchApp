@@ -15,11 +15,11 @@ namespace SearchServiceMock
         public SearchServiceMock()
         {
             _data = new[]
-            {
-                new SearchResult() { Id = 1, Text = "cat" },
-                new SearchResult() { Id = 2, Text = "dog" },
-                new SearchResult() { Id = 3, Text = "koala" },
-                new SearchResult() { Id = 4, Text = "rat" },
+             {
+                new SearchResult() { Id = 1, Text = "You need to ensure qualifications are recognised, robust and most importantly that learners are receiving practical English and maths solutions that enable progression and achievement in their lives, education and work" },
+                new SearchResult() { Id = 2, Text = "Type errors will show up in the same console as the build one." },
+                new SearchResult() { Id = 3, Text = "You will have to fix these type errors before you continue development or build your project." },
+                new SearchResult() { Id = 4, Text = "You can optionally enable an extension for your IDE" },
             };
         }
 

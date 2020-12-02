@@ -1,9 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\SearchApp",
-    "\\SearchService.Mock"
+    "\\SearchApp.UI"
   ],
-  "SelectedNode": "\\SearchApp\\Program.cs",
+  "SelectedNode": "\\SearchApp",
   "PreviewInSolutionExplorer": false
 }
